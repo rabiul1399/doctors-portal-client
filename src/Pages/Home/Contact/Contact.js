@@ -14,7 +14,9 @@ const Contact = () => {
             <br />
             <textarea className="resize w-80 h-20 rounded-md mb-4" placeholder=' Your message'></textarea>
             <br />
-            <MainButton>Submit</MainButton>
+            <div >
+            <MainButton >Submit</MainButton>
+            </div>
 
             
             

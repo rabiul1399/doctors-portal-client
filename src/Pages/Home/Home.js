@@ -1,7 +1,7 @@
 import React from 'react';
-import Appointment from './Appointment/Appointment';
+import MakeAppointment from './MakeAppointment/MakeAppointment';
 import TopBanner from './Banner/TopBanner';
-import Contact from './Contect/Contact';
+import Contact from './Contact/Contact';
 import Footer from './Footer/Footer';
 import Info from './Info/Info'
 import ServiceBanner from './Services/ServiceBanner/ServiceBanner';
@@ -10,12 +10,12 @@ import Testimonials from './Testimonials.js/Testimonials';
 
 const Home = () => {
     return (
-        <div className=''>
+        <div>
             <TopBanner></TopBanner>
          <Info></Info>
          <Services></Services>
          <ServiceBanner></ServiceBanner>
-         <Appointment></Appointment>
+         <MakeAppointment></MakeAppointment>
          <Testimonials></Testimonials>
          <Contact></Contact>
          <Footer></Footer>

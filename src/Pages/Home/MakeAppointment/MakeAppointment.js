@@ -2,7 +2,7 @@ import React from 'react';
 import doctor from '../../../assets/images/doctor.png';
 import MainButton from '../../Shared/MainButton';
 
-const Appointment = () => {
+const MakeAppointment = () => {
     return (
         <section className=' bg-appointment mb-11'>
            
@@ -22,4 +22,4 @@ const Appointment = () => {
     );
 };
 
-export default Appointment;
+export default MakeAppointment;

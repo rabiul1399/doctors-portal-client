@@ -7,7 +7,7 @@ const ServiceBanner = () => {
         <div>
              <div   className="hero min-h-screen "  >
                 <div className="hero-content flex-col lg:flex-row  ">
-                    <img src={treatment} className="max-w-md mr-7 rounded-lg shadow-2xl" />
+                    <img src={treatment} className="lg:max-w-md  mr-7 rounded-lg shadow-2xl" alt=''/>
                     <div className='ml-11 lg:w-80'>
                         <h1 className="text-4xl font-bold">Your New Smile Starts Here</h1>
                         <p className="py-6">A Panel doctor is a doctor or a radiologist who has been appointed by the Australian Government to perform medical examinations on visa applicants.</p>

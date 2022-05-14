@@ -10,7 +10,7 @@ const Services = () => {
             <h2 className='text-secondary font-bold text-center'>Our Services</h2>
             <h1 className='text-3xl pb-14 text-center'>Services We Provide</h1>
 
-            <div className='grid grid-cols-1 lg:grid-cols-3 m-6 gap-6 '>
+            <div className='grid grid-cols-1 lg:grid-cols-3 mt-4 gap-6 '>
                 <div className="card  bg-base-100 shadow-xl">
                     <figure>
                         <img src={fluoride} alt="Shoes" />
