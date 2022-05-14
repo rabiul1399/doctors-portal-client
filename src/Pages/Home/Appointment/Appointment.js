@@ -1,17 +1,24 @@
 import React from 'react';
 import doctor from '../../../assets/images/doctor.png';
+import MainButton from '../../Shared/MainButton';
+
 const Appointment = () => {
     return (
-        <div   className="hero min-h-screen bg-accent "  >
-        <div className="hero-content flex-col lg:flex-row  ">
-            <img src={doctor} className="max-w-md mr-7 rounded-lg shadow-2xl" />
-            <div className='ml-11'>
-                <h1 className="text-4xl font-bold">Your New Smile Starts Here</h1>
-                <p className="py-6">A Panel doctor is a doctor or a radiologist who has been appointed by the Australian Government to perform medical examinations on visa applicants.</p>
-                <button className="btn btn-primary bg-gradient-to-r from-secondary to-primary text-white hover:from-pink-500 hover:to-yellow-500">Get Started</button>
+        <section className=' bg-appointment mb-11'>
+           
+        <div className="flex justify-center items-center  ">
+           <div className="flex-1 hidden lg:block">
+           <img className='mt-[-100px]' src={doctor} alt="" />
+           </div>
+            <div className='flex-1  m-14 lg:m-0'>
+                <h3 className='text-xl text-primary font-bold'>Appointment</h3>
+                <h1 className="text-4xl text-white font-bold">Make an appointment Today</h1>
+                <p className="py-6 text-white">A Panel doctor is a doctor or a radiologist who has been appointed by the Australian Government to perform medical examinations on visa applicants.</p>
+               <MainButton>Get Stared</MainButton>
             </div>
         </div>
-        </div>
+      
+        </section>
     );
 };
 

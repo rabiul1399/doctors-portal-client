@@ -3,7 +3,9 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        'hero-local': "url('/src/assets/images/bg.png')"
+        'hero-local': "url('/src/assets/images/bg.png')",
+        'appointment': "url('/src/assets/images/appointment.png')",
+        'footer': "url('/src/assets/images/footer.png')",
       
       }
     },

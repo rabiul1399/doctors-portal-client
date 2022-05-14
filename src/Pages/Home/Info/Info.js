@@ -19,9 +19,9 @@ describe: "+000 123 456789",
 }
     return (
         <div className='grid grid-cols-1 lg:grid-cols-3 mx-6 mb-6  rounded-lg gap-4'>
-            <InfoCard dg={dg} bgClass="bg-gradient-to-r from-secondary to-primary " img={clock}></InfoCard>
-            <InfoCard dg={dg1} bgClass="bg-accent " img={marker}></InfoCard>
-            <InfoCard dg={dg2} bgClass="bg-gradient-to-r from-secondary to-primary " img={phone}></InfoCard>
+            <InfoCard dg={dg} bgclassName="bg-gradient-to-r from-secondary to-primary " img={clock}></InfoCard>
+            <InfoCard dg={dg1} bgclassName="bg-accent " img={marker}></InfoCard>
+            <InfoCard dg={dg2} bgclassName="bg-gradient-to-r from-secondary to-primary " img={phone}></InfoCard>
         </div>
     );
 };
