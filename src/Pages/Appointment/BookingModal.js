@@ -1,9 +1,52 @@
 import React from 'react';
 import { format } from 'date-fns';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
+import { toast } from 'react-toastify';
 
-const BookingModal = ({date, treatment  }) => {
-    
-    const { name, slots } = treatment;
+const BookingModal = ({ date, treatment, setTreatment }) => {
+    const [user] = useAuthState(auth);
+    const {_id, name, slots } = treatment;
+    const formattedDate = format(date, 'PP');
+
+
+    const handleBooking = event => {
+        event.preventDefault();
+        const slot = event.target.slot.value;
+        const number= event.target.phone.value
+        
+        const booking ={
+            treatmentId: _id,
+            treatment: name,
+            date: formattedDate,
+            slot,
+            patient: user.email,
+            patientName: user.displayName,
+            phone: number,
+        }
+
+        console.log(booking);
+
+        fetch('http://localhost:5000/booking',{
+            method:'POST',
+            headers:{
+                'content-type': 'application/json'
+            },
+            body:JSON.stringify(booking)
+        })
+        .then(res=>res.json())
+        .then(data=>{
+            if(data.success){
+                toast(`Appointment is set, ${formattedDate} at ${slot}`)
+            }
+            else{
+                toast.error(`Already have and appointment on ${data.booking?.date} at ${data.booking?.slot}`)
+            }
+            setTreatment(null)
+        })
+
+        setTreatment(null);
+    }
 
     return (
         <div>
@@ -12,19 +55,22 @@ const BookingModal = ({date, treatment  }) => {
                 <div className="modal-box">
                     <label htmlFor="booking-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
                     <h3 className="font-bold text-lg">{name}</h3>
-                    <form>
-                        <input type="text"  className=" border-2 input input-bordered  w-full my-1 " disabled />
+                    <form onSubmit={handleBooking} className='grid grid-cols-1 gap-3 justify-items-center mt-2'>
+                        <input type="text" value={format(date, 'PP')} className=" border-2 input input-bordered  w-full my-1 " disabled />
 
                         <select name='slot' className="select select-bordered w-full my-1 ">
-                           
+
                             {
-                                slots.map(slot => <option>{slot}</option>)
+                                slots.map((slot, index) => <option
+                                    key={index}
+                                    value={slot}
+                                >{slot}</option>)
                             }
                         </select>
-                        <input type="text" placeholder='Full Name' className=" border-2 input input-bordered  w-full my-1 " />
-                        <input type="text" placeholder='Phone Number' className=" border-2 input input-bordered  w-full my-1 " />
-                        <input type="text" placeholder='Email' className=" border-2 input input-bordered  w-full my-1 " />
-                        <input type="submit" className='btn btn-secondary w-full' value='Submit' />
+                        <input type="text" name="name" value={user?.displayName || ''} className=" border-2 input input-bordered  w-full my-1 " disabled />
+                        <input type="email" name='email' value={user?.email || ''} className=" border-2 input input-bordered  w-full my-1 " disabled />
+                        <input type="text" name="phone" placeholder='Phone Number' className=" border-2 input input-bordered  w-full my-1 " />
+                        <input type="submit" className='btn btn-secondary w-full my-1' value='Submit' />
                     </form>
 
                 </div>
