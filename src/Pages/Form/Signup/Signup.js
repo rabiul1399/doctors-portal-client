@@ -11,7 +11,7 @@ const Signup = () => {
     const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
     const { register, formState: { errors }, handleSubmit } = useForm();
     const [updateProfile, updating, updaeError] = useUpdateProfile(auth);
-   
+  
     const [
         createUserWithEmailAndPassword,
         user,
@@ -127,7 +127,7 @@ const Signup = () => {
                     {signInError}
                     <input className='btn w-full max-w-xs text-white' type="submit" value="SignUp" />
                 </form>
-                <p className='text-sm'>Already have an account? <Link to='/signup' className='text-primary'>please login</Link></p>
+                <p className='text-sm'>Already have an account? <Link to='/login' className='text-primary'>please login</Link></p>
 
                 <div className="divider">OR</div>
 
