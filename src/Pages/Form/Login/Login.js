@@ -4,6 +4,7 @@ import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-fireba
 import auth from '../../../firebase.init';
 import { useForm } from 'react-hook-form';
 import Loading from '../../Shared/Loading';
+import logo from '../../../assets/logo/google-rem.png';
 
 
 const Login = () => {
@@ -105,7 +106,7 @@ const Login = () => {
 
                     <div className="divider">OR</div>
 
-                    <button onClick={() => signInWithGoogle()} className="btn btn-outline  uppercase text-lg font-normal">Continue with google</button>
+                    <button onClick={() => signInWithGoogle()} className="btn btn-outline  uppercase text-lg font-normal"> <img className='w-9 mr-2' src={logo} alt="" /> Continue with google</button>
 
 
                 </div>

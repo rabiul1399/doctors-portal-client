@@ -1,11 +1,11 @@
 import React from 'react';
 
-const SocialLogin = () => {
+const MyReview = () => {
     return (
         <div>
-            
+            <h3>My Reviews</h3>
         </div>
     );
 };
 
-export default SocialLogin;
+export default MyReview;

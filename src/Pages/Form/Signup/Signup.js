@@ -4,18 +4,22 @@ import { useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfil
 import auth from '../../../firebase.init';
 import { useForm } from 'react-hook-form';
 import Loading from '../../Shared/Loading';
+import logo from '../../../assets/logo/google-rem.png';
+import useToken from '../../hooks/useToken';
 
 const Signup = () => {
     const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
     const { register, formState: { errors }, handleSubmit } = useForm();
     const [updateProfile, updating, updaeError] = useUpdateProfile(auth);
+   
     const [
         createUserWithEmailAndPassword,
         user,
         loading,
         error,
       ] = useCreateUserWithEmailAndPassword(auth,{sendEmailVerification:true});
-      
+
+      const [token] = useToken(user || gUser);
 
     let signInError;
     const navigate = useNavigate();
@@ -23,10 +27,10 @@ const Signup = () => {
     let from = location.state?.from?.pathname || "/";
 
     useEffect(() => {
-        if (user || gUser ) {
+        if (token) {
             navigate(from, { replace: true });
         }
-    }, [user, gUser, from, navigate])
+    }, [token, from, navigate])
 
     if (loading || gLoading || updating) {
         return <Loading></Loading>
@@ -37,7 +41,7 @@ const Signup = () => {
     }
 
     const onSubmit = async data => {
-        console.log(data)
+       
         await  createUserWithEmailAndPassword(data.email, data.password);
         await updateProfile({ displayName:data.name });
     
@@ -105,7 +109,7 @@ const Signup = () => {
                         <input
                             type="password"
                             placeholder="Password"
-                            className="input input-bordered w-full max-w-xs"
+                            className="input input-bordered w-full max-w-xs mb-5"
                             {...register("password", {
                                 required: {
                                     value: true,
@@ -117,11 +121,7 @@ const Signup = () => {
                                 }
                             })}
                         />
-                        <label className="label">
-                            {errors.password?.type === 'required' && <span className="label-text-alt text-red-500">{errors.password.message}</span>}
-                            {errors.password?.type === 'minLength' && <span className="label-text-alt text-red-500">{errors.password.message}</span>}
-                            <a href="/" className="label-text-alt link link-hover">Forgot password?</a>
-                        </label>
+                      
                     </div>
 
                     {signInError}
@@ -131,7 +131,7 @@ const Signup = () => {
 
                 <div className="divider">OR</div>
 
-                <button onClick={() => signInWithGoogle()} className="btn btn-outline  uppercase text-lg font-normal">Continue with google</button>
+                <button onClick={() => signInWithGoogle()} className="btn btn-outline  uppercase text-lg font-normal"> <img className='w-9 mr-2' src={logo} alt="" />Continue with google</button>
 
 
             </div>
