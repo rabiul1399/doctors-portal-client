@@ -11,9 +11,10 @@ const Dashboard = () => {
         <div className="drawer drawer-mobile">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content flex flex-col items-center mt-5 ">
-          <h2 className='text-4xl text-primary font-bold'>Dashboard</h2>
+          <h2 className='text-4xl text-primary font-bold '>Dashboard</h2>
+          <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden flex flex-col items-end">Open drawer</label>
          <Outlet></Outlet>
-          <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
+        
         
         </div> 
         <div className="drawer-side">
@@ -23,7 +24,11 @@ const Dashboard = () => {
             <li><Link to='/dashboard'>My Appointments: </Link></li>
             <li><Link to='/dashboard/review'>My Review</Link></li>
            {
-             admin &&  <li><Link to='/dashboard/users'>All Users</Link></li>
+             admin &&  <>
+             <li><Link to='/dashboard/users'>All Users</Link></li>
+             <li><Link to='/dashboard/addDoctor'>Add a Doctor</Link></li>
+             <li><Link to='/dashboard/manageDoctor'>Manage Doctors</Link></li>
+             </>
            }
           </ul>
         
